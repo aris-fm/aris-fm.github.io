@@ -1,17 +1,23 @@
 ---
 interface Props {
-  image: string
-  name: string
+  image: string;
+  name: string;
+  link: string;
 }
 
-const { image, name } = Astro.props
+const { image, name, link } = Astro.props;
 ---
 
 <section class="work my-16 text-center">
   <figure class="border p-2 radius-sm mb-4 dark:border-white dark:bg-white">
-    <img src={image} alt="AccelByte">
+    <a href={link}><img src={image} alt="AccelByte" /></a>
   </figure>
-  <h2 class="text-4xl mb-3 font-light">{name}</h2>
+  <h2 class="text-4xl mb-3 font-light">
+    {name}
+    <small class="text-[.75em]">
+      &mdash; <a class="text-sky-500" href={link}>{link}</a></small
+    >
+  </h2>
   <slot />
-  <hr class="my-16 w-[200px] m-auto border-t-4">
+  <hr class="my-16 w-[200px] m-auto border-t-4" />
 </section>
